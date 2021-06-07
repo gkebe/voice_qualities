@@ -47,10 +47,7 @@ for w in to_analyze:
 
             print("NOW PLAYING WORKER:", worker)
             # sample without replacement
-            if len(d[worker]) < 2:
-                samples = random.sample(d[worker], 1)
-            else: 
-                samples = random.sample(d[worker], 2)
+            samples = random.sample(d[worker], 1)
             for sample in samples:
                 file_name = wav_dir + sample + ".wav"
                 print(file_name)

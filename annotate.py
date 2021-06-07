@@ -10,7 +10,7 @@ wav_dir = "speech/"
 
 random.seed(1020)
 
-already_analyzed = pd.read_csv("speakers_ryan.tsv", sep="\t")["worker_id"].to_list()
+already_analyzed = pd.read_csv("speakers.tsv", sep="\t")["worker_id"].to_list()
 #already_analyzed = ["A3EUFDOUX1GCL","A1ZRKPQ04HU08B","AJY5G987IRT25","A1K4IPWUYHGD9W","A28QOYIO3C8WFY","A3OMRMNTOU7QXI","A3722NOMVUK89T","ARL7HOWLEHNOP","ALGU2HM1WHCVZ","APPNTU0LE3T9L","A9E9Y0LEAYO4V","A37MPHPHMGWFQB","A1YJY8G4QKPV00","A1KFLCWGG1RE43","A1ITF1O2NFDPCP","AI521GBL3HJSC","A1VXQ7LMBTE5LF","A2KH641ASLS5P9","A28QUR0QYD2WI7","A14LO2FWSF9AJU","A66ZK7SJ1CGBZ","A3N2NKUWP5ZH7","A1RLO9LNUJIW5S","A3AYR3H2AYYT5G","APXFQMO4UO5XQ","A3PXCRGJZE1QC3","A1WSFA9AZJK514","A181IS1TFLFH3X","A1WX20RQOMRT46","A3BP890CXV4UMN","AKMQH2MGTUWO9","A1PFJ5ACN1S55A","A2WYBSYUI8TSKL","AUFIJSWMX9MZI","A1QDMUI51EV5TG","AQA4AX0RCRPSV","A4H1NYJVE7C53","A2PTXQ060AH5S5","A3KFPUINH8E30A","AXID3RPK6NZT6","A30YR5TPOKQYXJ","A3JFC6OJ13O1XR","A2U31P99HREKV7","A3L5J7CICPV3FG","A1KP6JSKQXPCSC","A2XPKBKZNT80U9","A38B229W1GG2XE","A102UBN1SZ3L6R","A1HLG5NN2I16GN","AI8A9G2N9JJ4S","A344S14EBWE8L4","A1P0SZ4C7PLX7K","A2RM9M3RR67FQO","A1CG3SMBJ1CEIQ","A2DDPSXH2X96RF","A3GNQDFPZALU92","A3332HTQYBESHD","AUKIQ4JR04MDJ","A33GYW2BKVC1DY","A1XDZEODPAFC5K","A357NQQMDTHD49","A39VDXGL1RVURU","A17W4VSDK9SD33","A3MY6E0UB6RBZH","A3TEVNU2YYO1VH","AW1QY7Q83DYCJ","A1FKVFJO2M8R8V","A1AZV2XOQK7RSW","A2M4QDRH3ATC1I","A2R9NSMPJATQ0U","A391OVILIK4JK2","A2L7S6RZOZ6NM9","AQDYPHA9UGEAL"]
 
 df = pd.read_csv('speech.tsv', sep='\t')
@@ -71,9 +71,9 @@ for w in to_analyze:
     muffled_ness = input("muffled-ness (1 - 3 (low-high)): ")
     volume = input("volume (1 - 4 (low-high)): ")
     background_noise = input("background noise (1-4) (low-high): ")
-    line = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(w[0], w[1], w[2], ["no", "yes"][int(accent)],["man", "woman", "undet"][int(gender)],["no", "yes"][int(creak)],["no", "yes"][int(hoarsness)],muffled_ness,volume,background_noise)
+    line = "\n{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(w[0], w[1], w[2], ["no", "yes"][int(accent)],["man", "woman", "undet"][int(gender)],["no", "yes"][int(creak)],["no", "yes"][int(hoarsness)],muffled_ness,volume,background_noise)
     with open("speakers.tsv", "a") as f:
-        f.writelines([line])
+        f.write([line])
     s = input('press s to stop or other to continue... ')
     if s == 's':
         break

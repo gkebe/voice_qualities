@@ -6,7 +6,7 @@ import random
 from playsound import playsound
 
 
-speakers = pd.read_csv("speakers_ryan.tsv", sep="\t").astype({"volume":'str', "muffled-ness":'str', "background_noise":'str'})
+speakers = pd.read_csv("speakers.tsv", sep="\t").astype({"volume":'str', "muffled-ness":'str', "background_noise":'str'})
 
 wav_dir = "speech/"
 
